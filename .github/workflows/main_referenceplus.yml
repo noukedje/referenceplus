@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: path/to/artifact/
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +42,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
-
+          path: path/to/artifact/java-app
+          
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
