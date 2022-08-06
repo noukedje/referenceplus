@@ -28,7 +28,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: path/to/artifact/
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,10 +42,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app
-          path: path/to/artifact/
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: path/to/artifact
           
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
