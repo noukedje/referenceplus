@@ -38,14 +38,12 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: java-app
-          path: path/to/artifact
+
+      - uses: actions/download-artifact@v3
+
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: path/to/artifact  
+        
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
