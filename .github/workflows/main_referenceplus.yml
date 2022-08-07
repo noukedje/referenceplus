@@ -39,7 +39,6 @@ jobs:
     steps:
      - uses: actions/download-artifact@v3
        with:
-        name: java-app
         path: ~/download/path
         
      - name: Deploy to Azure Web App
