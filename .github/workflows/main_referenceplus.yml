@@ -13,7 +13,7 @@ env:
   AZURE_WEBAPP_NAME: referenceplus  # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: ${{ github.workspace }} # set this to the path to your web app project
   JAVA_VERSION: '18'                # set this to the Java version to use
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}     # set GH repo secret with the publish profile of the web app
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53D966A5B15F4D7CA7A3DE29E656F6B2 }}     # set GH repo secret with the publish profile of the web app
 
 jobs:
   build-and-deploy:
