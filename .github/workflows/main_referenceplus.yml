@@ -39,7 +39,7 @@ jobs:
     steps:
      - uses: actions/download-artifact@v3
        with:
-        path: ~/download/path
+        path: path/to/artifact
         
      - name: Deploy to Azure Web App
        id: deploy-to-webapp
@@ -48,4 +48,5 @@ jobs:
           app-name: 'referenceplus'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53D966A5B15F4D7CA7A3DE29E656F6B2 }}
+          path: path/to/artifact
           package: '*.jar'
