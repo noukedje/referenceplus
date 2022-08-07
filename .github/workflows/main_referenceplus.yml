@@ -37,17 +37,18 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/download-artifact@v3
-
-      - name: Display structure of downloaded files
-        run: ls -R
+     - uses: actions/checkout@v2
+     - uses: actions/download-artifact@v3
+       with:
+         path: path/to/artifacts
+     - name: Display structure of downloaded files
+       run: ls -R
+       working-directory: path/to/artifacts
         
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
+     - name: Deploy to Azure Web App
+       id: deploy-to-webapp
+       uses: azure/webapps-deploy@v2
+       with:
           app-name: 'referenceplus'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53D966A5B15F4D7CA7A3DE29E656F6B2 }}
