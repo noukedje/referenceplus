@@ -9,11 +9,7 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  AZURE_WEBAPP_NAME: referenceplus  # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: ${{ github.workspace }} # set this to the path to your web app project
-  JAVA_VERSION: '18'                # set this to the Java version to use
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53D966A5B15F4D7CA7A3DE29E656F6B2 }}     # set GH repo secret with the publish profile of the web app
+   # set GH repo secret with the publish profile of the web app
 
 jobs:
   build-and-deploy:
@@ -23,8 +19,12 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        environment: 'Production'
-    
+        environment: production
+      env:
+        AZURE_WEBAPP_NAME: referenceplus  # set this to your application's name
+        AZURE_WEBAPP_PACKAGE_PATH: ${{ github.workspace }} # set this to the path to your web app project
+        JAVA_VERSION: '18'                # set this to the Java version to use
+        AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53D966A5B15F4D7CA7A3DE29E656F6B2 }}  
     - uses: actions/checkout@main
     - name: Set up JDK 18
       uses: actions/setup-java@v1
