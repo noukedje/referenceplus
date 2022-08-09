@@ -38,12 +38,17 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
-          
+          path: '${{ github.workspace }}\target\*.jar'
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: '${{ github.workspace }}\target\*.jar'
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
